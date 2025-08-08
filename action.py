@@ -53,6 +53,16 @@ def Action(message: str):
 
     if "open linkedin" in msg:
         return {"action": "open_url", "url": "https://www.linkedin.com", "message": "Opening LinkedIn..."}
+    
+    if "open " in msg:
+        site = msg.replace("open ", "").strip()
+        search_url = f"https://www.google.com/search?q={site}"
+        return {
+            "action": "open_url",
+            "url": search_url,
+            "message": f"Opening {site}"
+        }
+
 
     # === Weather & Location ===
     if "weather" in msg or "forecast" in msg:
